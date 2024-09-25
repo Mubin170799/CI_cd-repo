@@ -1,11 +1,11 @@
 name: model_train
 
 permissions:
-  id-token:  write
+  id-token: write
   contents: write
 
 on:
-  -push
+  - push
 
 jobs:
   run:
@@ -26,4 +26,3 @@ jobs:
           cat report.txt
 
           echo "confusion matrix and feature importance" > report1.md
-        
