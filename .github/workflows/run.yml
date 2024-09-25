@@ -34,4 +34,3 @@ jobs:
       - name: create the report file
         run: |
           echo " model training complete accuracy: 92%" > report.md
-        
