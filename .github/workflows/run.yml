@@ -13,19 +13,19 @@ jobs:
       - ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      # - uses: actions/setup-python@v4
       - uses: iterative/setup-cml@v1
 
-      - name: install dependices
-        run: 
-          pip install -r requirements.txt
+      # - name: install dependices
+      #   run: 
+      #     pip install -r requirements.txt
       
       - name: train model
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-        run:
-          # pip install -r requirements.txt
+        run: |
+          pip install -r requirements.txt
           python train_model.py
 
           echo "RF and LR model score" > report.md
