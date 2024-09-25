@@ -1,0 +1,29 @@
+name: model_train
+
+permissions:
+  id-token:  write
+  contents: write
+
+on:
+  -push
+
+jobs:
+  run:
+    runs-on:
+      - ubuntu-latest
+    steps:
+      - uses: interactive/setup-cml@v1
+      - uses: actions/checkout@v3
+      - name: train model
+        env:
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+        run:
+          pip install -r requirements.txt
+          python train_model.py
+
+          echo "RF and LR model score" > report.md
+          cat report.txt
+
+          echo "confusion matrix and feature importance" > report1.md
+        
