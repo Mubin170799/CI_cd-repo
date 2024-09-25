@@ -118,18 +118,20 @@ plt.tight_layout()
 plt.savefig('FeatureImportance.png')
 plt.close()
 
-with open('scores.txt',"w") as score:
-    score.write("Random Forest Train Var: %2.1f%%\n" %  train_acc_rf)
-    score.write("Random Forest Test Var: %2.1f%%\n" %  test_acc_rf)
-    score.write("F1 Score: %2.1f%%\n" %  f1_rf)
-    score.write("Recall Score: %2.1f%%\n" %  recall_rf)
-    score.write("Precision Score: %2.1f%%\n" %  prec_rf)
+print("Random forst train score is = ", train_acc_rf)
 
-    score.write("\n")
-    score.write("\n")
+# with open('scores.txt',"w") as score:
+#     score.write("Random Forest Train Var: %2.1f%%\n" %  train_acc_rf)
+#     score.write("Random Forest Test Var: %2.1f%%\n" %  test_acc_rf)
+#     score.write("F1 Score: %2.1f%%\n" %  f1_rf)
+#     score.write("Recall Score: %2.1f%%\n" %  recall_rf)
+#     score.write("Precision Score: %2.1f%%\n" %  prec_rf)
 
-    score.write("Logistic Regression Train Var: %2.1f%%\n" %  train_acc_lr)
-    score.write("Logistic Regression Test Var: %2.1f%%\n" %  test_acc_lr)
-    score.write("F1 Score: %2.1f%%\n" %  f1)
-    score.write("Recall Score: %2.1f%%\n" %  recall)
-    score.write("Precision Score: %2.1f%%\n" %  prec)
+#     score.write("\n")
+#     score.write("\n")
+
+#     score.write("Logistic Regression Train Var: %2.1f%%\n" %  train_acc_lr)
+#     score.write("Logistic Regression Test Var: %2.1f%%\n" %  test_acc_lr)
+#     score.write("F1 Score: %2.1f%%\n" %  f1)
+#     score.write("Recall Score: %2.1f%%\n" %  recall)
+#     score.write("Precision Score: %2.1f%%\n" %  prec)
