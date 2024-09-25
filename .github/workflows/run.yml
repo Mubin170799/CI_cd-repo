@@ -29,7 +29,8 @@ jobs:
           pip install -r requirements.txt
           python test.py
 
-      - name: |
+      - name: training
+        run: |
           python train_model.py
           echo "RF and LR model score" > report.md
         
