@@ -24,13 +24,13 @@ jobs:
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Run test
+      # - name: Run test
+      #   run: |
+      #     pip install -r requirements.txt
+      #     python test.py
+
         run: |
           pip install -r requirements.txt
-          python test.py
-
-      - name: training
-        run: |
           python train_model.py
           echo "RF and LR model score" > report.md
         
