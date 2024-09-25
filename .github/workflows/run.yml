@@ -5,24 +5,52 @@ permissions:
   contents: write
 
 on:
-  - push
+  push
 
 jobs:
   run:
-    runs-on:
-      - ubuntu-latest
+    runs-on: ubuntu-latest
+
     steps:
-      - uses: iterative/setup-cml@v1
+      # Checkout the code
       - uses: actions/checkout@v3
-      - name: train model
+
+      # Setup Python
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.8'  # or the Python version you are using
+
+      # Cache pip dependencies
+      - name: Cache pip dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      # Set up CML
+      - uses: iterative/setup-cml@v1
+      
+      # Train the model and generate reports
+      - name: Train model
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-        run:
-          pip install -r requirements.txt
+        run: |
           python train_model.py
+          
+          # Create reports with model metrics
+          python generate_reports.py  # Assuming you have a script that creates detailed reports
+          
+          echo "Model training complete. Scores saved." > report.md
+          cat report.md
 
-          echo "RF and LR model score" > report.md
-          cat report.txt
-
-          echo "confusion matrix and feature importance" > report1.md
+      # Display the report
+      - name: Show report
+        run: cat report.md
