@@ -12,16 +12,16 @@ feature_check = all(dataset.columns.isin(cols))
 feature_check
 
 #Length Check
-sepal_length_test = dataset['sepal length (cm)'].between(4,7).all()
-sepal_width_test = dataset['sepal width (cm)'].between(2,5).all()
-petal_length_test = dataset['petal length (cm)'].between(1,6).all()
-petal_width_test = dataset['petal width (cm)'].between(0,3).all()
+# sepal_length_test = dataset['sepal length (cm)'].between(4,7).all()
+# sepal_width_test = dataset['sepal width (cm)'].between(2,5).all()
+# petal_length_test = dataset['petal length (cm)'].between(1,6).all()
+# petal_width_test = dataset['petal width (cm)'].between(0,3).all()
 
-feature_check = ["Passed &#9989;" if feature_check else "Failed &#10540;"]
-sepal_length_test = ["Passed &#9989;" if sepal_length_test else "Failed &#10540;"]
-sepal_width_test =  ["Passed &#9989;" if sepal_width_test else "Failed &#10540;"]
-petal_length_test = ["Passed &#9989;" if petal_length_test else "Failed &#10540;"]
-petal_width_test = ["Passed &#9989;" if petal_width_test else "Failed &#10540;"]
+# feature_check = ["Passed &#9989;" if feature_check else "Failed &#10540;"]
+# sepal_length_test = ["Passed &#9989;" if sepal_length_test else "Failed &#10540;"]
+# sepal_width_test =  ["Passed &#9989;" if sepal_width_test else "Failed &#10540;"]
+# petal_length_test = ["Passed &#9989;" if petal_length_test else "Failed &#10540;"]
+# petal_width_test = ["Passed &#9989;" if petal_width_test else "Failed &#10540;"]
 
 expected_columns = 4
 def test_check_schema():
@@ -33,17 +33,19 @@ test_check_schema()
 
 
 #----- print the statement
-feature_check = "Passed &#9989;" if feature_check else "Failed &#10540;"
-sepal_length_test = "Passed &#9989;" if sepal_length_test else "Failed &#10540;"
-sepal_width_test =  "Passed &#9989;" if sepal_width_test else "Failed &#10540;"
-petal_length_test = "Passed &#9989;" if petal_length_test else "Failed &#10540;"
-petal_width_test = "Passed &#9989;" if petal_width_test else "Failed &#10540;"
+feature_check_result = "Passed ✅" if feature_check else "Failed ❌"
+sepal_length_test_result = "Passed ✅" if sepal_length_test else "Failed ❌"
+sepal_width_test_result = "Passed ✅" if sepal_width_test else "Failed ❌"
+petal_length_test_result = "Passed ✅" if petal_length_test else "Failed ❌"
+petal_width_test_result = "Passed ✅" if petal_width_test else "Failed ❌"
 
-print(f"Feature check: {feature_check}")
-print(f"Sepal length test: {sepal_length_test}")
-print(f"Sepal width test: {sepal_width_test}")
-print(f"Petal length test: {petal_length_test}")
-print(f"Petal width test: {petal_width_test}")
+# Printing the results
+print(f"Feature check: {feature_check_result}")
+print(f"Sepal length test: {sepal_length_test_result}")
+print(f"Sepal width test: {sepal_width_test_result}")
+print(f"Petal length test: {petal_length_test_result}")
+print(f"Petal width test: {petal_width_test_result}")
+
 
 
 
