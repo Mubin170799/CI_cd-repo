@@ -1,56 +1,35 @@
 name: model_train
 
 permissions:
-  id-token: write
+  id-token:  write
   contents: write
 
 on:
-  push
+  - push
 
 jobs:
   run:
-    runs-on: ubuntu-latest
-
+    runs-on:
+      - ubuntu-latest
     steps:
-      # Checkout the code
       - uses: actions/checkout@v3
-
-      # Setup Python
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.8'  # or the Python version you are using
-
-      # Cache pip dependencies
-      - name: Cache pip dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
-
-      # Install dependencies
-      - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
-
-      # Set up CML
+      - uses: actions/setup-python@v4
       - uses: iterative/setup-cml@v1
+
+      - name: install dependices
+        run: 
+          pip install -r requirements.txt
       
-      # Train the model and generate reports
-      - name: Train model
+      - name: train model
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          python train_model.py
-          
-          # Create reports with model metrics
-          python generate_reports.py  # Assuming you have a script that creates detailed reports
-          
-          echo "Model training complete. Scores saved." > report.md
-          cat report.md
 
-      # Display the report
-      - name: Show report
-        run: cat report.md
+        run:
+          # pip install -r requirements.txt
+          python train_model.py
+
+          echo "RF and LR model score" > report.md
+          cat report.txt
+
+          echo "confusion matrix and feature importance" > report1.md
+        
