@@ -20,17 +20,16 @@ jobs:
       #   run: 
       #     pip install -r requirements.txt
       
-      - name: train model
+      - name: test model
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # - name: Run test
-      #   run: |
-      #     pip install -r requirements.txt
-      #     python test.py
-
         run: |
           pip install -r requirements.txt
+          python test.py
+
+      - name: train model
+        run: |
+          # pip install -r requirements.txt
           python train_model.py
           echo "RF and LR model score" > report.md
         
