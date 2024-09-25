@@ -32,12 +32,27 @@ def test_check_schema():
 test_check_schema()
 
 
-with open("test.txt", 'w') as outfile:
-        outfile.write("Feature Test: %s\n" % feature_check[0])
-        outfile.write("sepal length Test : %s\n" % sepal_length_test[0])
-        outfile.write("sepal width Test : %s\n" % sepal_width_test[0])
-        outfile.write("petal length Test : %s\n" % petal_length_test[0])
-        outfile.write("petal width Test : %s\n" % petal_width_test[0])
+#----- print the statement
+feature_check = "Passed &#9989;" if feature_check else "Failed &#10540;"
+sepal_length_test = "Passed &#9989;" if sepal_length_test else "Failed &#10540;"
+sepal_width_test =  "Passed &#9989;" if sepal_width_test else "Failed &#10540;"
+petal_length_test = "Passed &#9989;" if petal_length_test else "Failed &#10540;"
+petal_width_test = "Passed &#9989;" if petal_width_test else "Failed &#10540;"
 
-        outfile.write("\n")
-        outfile.write("\n")
+print(f"Feature check: {feature_check}")
+print(f"Sepal length test: {sepal_length_test}")
+print(f"Sepal width test: {sepal_width_test}")
+print(f"Petal length test: {petal_length_test}")
+print(f"Petal width test: {petal_width_test}")
+
+
+
+# with open("test.txt", 'w') as outfile:
+#         outfile.write("Feature Test: %s\n" % feature_check[0])
+#         outfile.write("sepal length Test : %s\n" % sepal_length_test[0])
+#         outfile.write("sepal width Test : %s\n" % sepal_width_test[0])
+#         outfile.write("petal length Test : %s\n" % petal_length_test[0])
+#         outfile.write("petal width Test : %s\n" % petal_width_test[0])
+
+#         outfile.write("\n")
+#         outfile.write("\n")
