@@ -16,14 +16,15 @@ jobs:
       # - uses: actions/setup-python@v4
       - uses: iterative/setup-cml@v1
 
-      - name: install dependices
-        run: 
-          pip install -r requirements.txt
+      # - name: install dependices
+      #   run: 
+      #     pip install -r requirements.txt
       
       - name: test model
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          pip install -r requirements.txt
           python test.py
 
       - name: train model
